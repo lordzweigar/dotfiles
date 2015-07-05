@@ -12,15 +12,15 @@ icon() {
     echo -n -e "%{F$pIcon}\u$1 %{F$pFG}"
 }
 
-weather() {
-    icon f0c2
-    weatherURL='http://www.accuweather.com/en/us/manhattan-ks/66502/weather-forecast/328848'
-    wget -q -O- "$weatherURL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $12"°F" }'| head -1
-}
+#weather() {
+#    icon f0c2
+#    weatherURL='http:http://www.accuweather.com/en/au/cairns/13968/weather-forecast/13968'
+#    wget -q -O- "$weatherURL" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $12"°C" }'| head -1
+#}
 
 clock() {
     icon f073
-    date '+%b%e,%l:%M'
+    date '+%b%e,%l:%M:%S'
 }
 
 mail() {
@@ -59,7 +59,7 @@ network() {
     fi
     ip link show $eth0 | grep 'state UP' >/dev/null && int=$eth0 ||int=$wifi
     icon f0ac
-    ping -W 1 -c 1 8.8.8.8 >/dev/null 2>&1 &&
+    ping -W 1 -c 1 10.0.0.138 >/dev/null 2>&1 &&
         echo -e '\uf00c' || echo -e '\uf00d'
 }
 
@@ -111,5 +111,8 @@ while :; do
     done
 
     echo "$buf%{B$pBG}"
-    sleep 1 # The HUD will be updated every second
+    sleep 0.5 # The HUD will be updated every second
 done
+
+
+if [ `ps -e | grep -c $(info.sh $0)` -gt 2 ]; then exit 0; fi

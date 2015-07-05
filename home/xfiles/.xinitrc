@@ -18,6 +18,7 @@ mpd ~/.config/mpd/mpd.conf &
 
 #make the default x cursor not an x :)
 xsetroot -cursor_name left_ptr &
+setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 
 #dunst
 . ~/.bspwm_theme
@@ -34,5 +35,8 @@ rm /tmp/$(ls /tmp | grep bspwm)
 export SXHKD_SHELL=sh
 
 #start bspwm and sxhkd
-sxhkd -f 100 -c /home/$USER/.config/sxhkd/sxhkdrc &
+xfce4-power-manager &
+xrandr --output VGA-1 --off --output HDMI-1 --mode 1680x1050 --pos 0x390 --rotate normal --output DVI-D-1 --mode 2560x1440 --pos 1680x0 --rotate normal --output DVI-D-2 --mode 1680x1050 --pos 4240x390 --rotate normal &
+emacs --daemon &
+sxhkd -f 1000 -c /home/$USER/.config/sxhkd/sxhkdrc &
 exec bspwm -c /home/$USER/.config/bspwm/bspwmrc > .xinit.log

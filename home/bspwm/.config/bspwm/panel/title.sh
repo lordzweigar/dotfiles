@@ -85,3 +85,5 @@ while :; do
     fi
    sleep $WIN_REFRESH_DELAY;
 done
+
+if [ `ps -e | grep -c $(info.sh $0)` -gt 2]; then exit 0; fi

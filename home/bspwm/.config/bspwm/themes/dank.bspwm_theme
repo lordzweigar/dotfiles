@@ -1,19 +1,12 @@
-#!/bin/bash
-# pyonium theme
-# named so for the redditor who I got the term colors used here from.
-
-THEME_NAME=pyonium
-
+THEME_NAME=dank
 GTK_THEME=pyonium
 
-# vim theme name
-VIM_COLORS=mustang
+VIM_COLORS=dank
 
-# termite theme name
-TERMITE_CONFIG=pyonium
+TERMITE_CONFIG=dank
 
 # Background command
-export BG_COMMAND='feh --bg-fill /home/cosumu/.wallpapers/compsci.png'
+export BG_COMMAND='feh --bg-fill /home/cosumu/Pictures/Wallapers/pyonuim.jpg'
 
 . ~/.config/bspwm/themes/base.bspwm_theme $TERMITE_CONFIG
 

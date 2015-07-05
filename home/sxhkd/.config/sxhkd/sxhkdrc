@@ -23,11 +23,11 @@ super + b
 super + {s,f}
     bspc window -t {floating,fullscreen}
 
-super + {_,shift} + Tab
+super + {bracketleft,bracketright}
     bspc desktop -f {next,prev}
 
-alt + {_,shift} + Tab
-    bspc window -f {next,prev}
+#alt + {_,shift} + Tab
+#   bspc window -f {next,prev}
 
 super + apostrophe
     bspc window -s last
@@ -35,7 +35,7 @@ super + apostrophe
 super + m
     bspc window -s biggest
 
-super + shift + {h,j,k,l}
+super + shift + {j,k,i,l}
     bspc config pointer_follows_focus true; \
     cur_win=$(bspc query -W -w); \
     cur_mon=$(bspc query -M -m); \
@@ -54,7 +54,7 @@ super + shift + {h,j,k,l}
     fi; \
     bspc config pointer_follows_focus false
 
-super +  {h,j,k,l}
+super +  {j,k,i,l}
     bspc config pointer_follows_monitor true; \
     bspc config pointer_follows_focus true; \
     dir={left,down,up,right}; \
@@ -66,17 +66,17 @@ super +  {h,j,k,l}
 
 super + {comma,period}
     bspc desktop -C {backward,forward}
-
-super + ctrl + {h,j,k,l}
+e
+super + ctrl + {j,k,i,l}
     bspc window -p {left,down,up,right}
 
-super + ctrl + {_,shift + }space
+super + shift + space
     bspc {window -p cancel,desktop -c}
 
-super + alt + {h,j,k,l}
+super + alt + {j,k,i,l}
     bspc window -e {left -35,down +35,up -35,right +35}
 
-super + alt + shift + {h,j,k,l}
+super + alt + shift + {j,k,i,l}
     bspc window -e {right -35,up +35,down -35,left +35}
 
 super + ctrl + {1-9}
@@ -111,7 +111,7 @@ super + d
     bspc control --toggle-visibility
 
 super + shift + q
-    bspc quit
+    bspc quit && pkill info.sh && pkill panel.sh
 
 super + {_,shift} + semicolon
     bspc desktop -R {90,270}
@@ -136,6 +136,8 @@ super + Return
 super + space
     ~/bin/dmenu_run
 
+super + Tab
+    rofi -show window
 # make sxhkd reload its configuration files:
 super + Escape
     pkill -USR1 -x sxhkd

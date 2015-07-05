@@ -21,6 +21,9 @@ PATH=$PATH:~/bin:~/.config/bar
 # add the dir for gem execs to path:
 PATH=$PATH:/home/$USER/.gem/ruby/2.2.0/bin
 
+
+# Paths
+PATH=$PATH:/home/$USER/scripts
 # auto-complete for pacman when using sudo:
 complete -cf sudo
 
@@ -77,7 +80,7 @@ PS1='$(prompt) '
 alias tmux='tmux -2' #Make tmux assume 256 colors.
 alias cavampd='cava -i fifo -p /tmp/mpd.fifo -b 20'
 alias info='info --vi-keys'
-alias vim='nvim'
+#alias vim='nvim'
 alias sysinfo='archey3 && dfc -p /dev && colors'
 alias ls='ls --color=auto'
 alias paste="curl -F 'sprunge=<-' http://sprunge.us"
@@ -87,9 +90,13 @@ alias make="clear && make"
 alias shot="scrot ~/Screenshots/`date +%y-%m-%d-%H:%M:%S`.png"
 alias getip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 
+# my aliases
+alias best="youtube-dl -i -f 'bestvideo+bestaudio'"
+alias besta="youtube-dl -i -f 'bestaudio'"
+alias bestv="youtube-dl -i -f 'bestvideo'"
 # programs
 export EDITOR=vim
-export BROWSER=chromium
+export BROWSER=firefox
 
 # autostartx if running on the first tty:
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then exec startx; fi

@@ -17,7 +17,7 @@ bspc config urgent_border_color "$b_urgent_border_color"
 bspc config focused_locked_border_color "$b_focused_locked_border_color"
 
 #focus options:
-bspc config focus_follows_pointer true
+bspc config focus_follows_pointer false
 bspc config pointer_follows_monitor false
 bspc config pointer_follows_focus false
 bspc config focus_by_distance true
