@@ -26,7 +26,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 CUR_X_OFFSET=0
 
 # Get the number of monitors we will be making bars for
-num_mon=$(bspc query -M)
+num_mon=1 # changed from '$(bspc query -M)'
 
 # panel_gap to 0 if no gaps.
 [ "$BSPWM_GAPS" = false ] && PANEL_GAP=0

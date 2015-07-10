@@ -59,10 +59,9 @@ network() {
     fi
     ip link show $eth0 | grep 'state UP' >/dev/null && int=$eth0 ||int=$wifi
     icon f0ac
-      ping -W 1 -c 1 10.0.0.138 >/tmp/maymay.txt 2>&1 &&
-#          echo -e '\uf00c' || echo -e '\uf00d'
-      echo $(grep -o -P '(time=).*(ms)' /tmp/maymay.txt)
-    }
+    ping -W 1 -c 1 10.0.0.138 >/dev/null 2>&1 &&
+        echo -e '\uf00c' || echo -e '\uf00d'
+}
 
 mpd() {
     cur_song=$(mpc current | cut -c1-30)

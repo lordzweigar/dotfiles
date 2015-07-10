@@ -13,14 +13,14 @@ VIM_COLORS=mustang
 TERMITE_CONFIG=pyonium
 
 # Background command
-export BG_COMMAND='feh --bg-fill /home/cosumu/.wallpapers/compsci.png'
+#export BG_COMMAND='feh --bg-fill /home/cosumu/.wallpapers/compsci.png'
 
 . ~/.config/bspwm/themes/base.bspwm_theme $TERMITE_CONFIG
 
 # bspwm
 b_border_width=8
 b_window_gap=20
-b_split_ratio=0.6
+b_split_ratio=0.5
 
 # panel
 PANEL_HEIGHT=32

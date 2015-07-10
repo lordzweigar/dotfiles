@@ -38,7 +38,7 @@ battery() {
         cat $BATC
     else
         #no battery information found.
-        echo '+100'
+        echo '~'
     fi
 }
 
@@ -57,12 +57,13 @@ network() {
         wifi=$int2
         eth0=$int1
     fi
-    ip link show $eth0 | grep 'state UP' >/dev/null && int=$eth0 ||int=$wifi
+u
+    ip link show $enp5s0 | grep 'state UP' >/dev/null && int=$eth0 ||int=$wifi
     icon f0ac
-      ping -W 1 -c 1 10.0.0.138 >/tmp/maymay.txt 2>&1 &&
-#          echo -e '\uf00c' || echo -e '\uf00d'
-      echo $(grep -o -P '(time=).*(ms)' /tmp/maymay.txt)
-    }
+    ping -W 1 -c 1 10.0.0.138  | grep -o -P '(time=).*(ms)'  2>&1  &&
+        echo -e '\uf00c' || echo -e '\uf00d'
+
+}
 
 mpd() {
     cur_song=$(mpc current | cut -c1-30)
@@ -104,8 +105,12 @@ themeSwitch() {
 while :; do
     buf="S%{F$pFG}"
 
-    [ -z "$*" ] && items="mail yaourtUpdates mpd battery network volume weather clock themeSwitch" \
+ #   [ -z "$*" ] && items="mail yaourtUpdates mpd  network volume weather clock themeSwitch" \
+#                || items="$@"
+
+        [ -z "$*" ] && items="mail yaourtUpdates mpd battery network volume weather clock themeSwitch" \
                 || items="$@"
+
 
     for item in $items; do
         buf="${buf}%{B$pBGInactiveTab}$(printf %${pPadding}s)$($item)$(printf %${pPadding}s)${delim}";
@@ -116,4 +121,5 @@ while :; do
 done
 
 
-if [ `ps -e | grep -c $(info.sh $0)` -gt 2 ]; then exit 0; fi
+ if [ `ps -e | grep -c $(info.sh $0)` -gt 2 ]; then exit 0; fi
+

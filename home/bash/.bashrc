@@ -64,6 +64,30 @@ function extract()      # Handy Extract Program
     fi
 }
 
+# Handy blocking script
+# I should have used getopts but i'm too lazy
+
+function block()
+    if [ -n $1 ] ; then
+
+          echo 'blocked' $1 && sudo echo  "0.0.0.0  $1" >> /etc/hosts && sudo systemctl restart nscd
+     else
+        echo  'Successfully blocked nothing'
+    fi
+
+function unblock()
+    if [ -n $1 ] ; then
+        echo 'unblocked' $1 && sudo sed -i '/$1/d' /etc/hosts  && sudo systemctl restart nscd
+     else
+        echo  'Successfully unblocked nothing'
+    fi
+alias unblockall="sudo mv /etc/hosts /etc/hosts-unblocked && sudo systemctl restart nscd"
+alias   blockall="sudo mv /etc/hosts-unblocked /etc/hosts && sudo systemctl restart nscd"
+
+
+
+
+
 prompt () {
     _ERR=$?
     _UID=$(id -u)
@@ -86,7 +110,7 @@ alias ls='ls --color=auto'
 alias paste="curl -F 'sprunge=<-' http://sprunge.us"
 alias grep="grep --color=auto"
 alias pacman="pacman --color=always"
-alias make="clear && make"
+#alias make="clear && make"
 alias shot="scrot ~/Screenshots/`date +%y-%m-%d-%H:%M:%S`.png"
 alias getip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 
@@ -94,9 +118,11 @@ alias getip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e
 alias best="youtube-dl -i -f 'bestvideo+bestaudio'"
 alias besta="youtube-dl -i -f 'bestaudio'"
 alias bestv="youtube-dl -i -f 'bestvideo'"
+alias nsync="rsync -PRra -e ssh"
+
 # programs
 export EDITOR=vim
 export BROWSER=firefox
-
-# autostartx if running on the first tty:
+# autostart if running on the first tty:
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then exec startx; fi
+alias fzf=fzf --color=16,fg:7,info:11,fg+:1,hl+:4,hl:1 --inline-info

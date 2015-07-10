@@ -10,7 +10,6 @@ feh
 mpc
 mpd
 ncmpcpp
-neovim-git
 numix-icon-theme-git
 sxhkd
 termite
@@ -19,3 +18,14 @@ ttf-dejavu
 ttf-dejavu-sans-mono-powerline-git
 ttf-font-awesome
 xtitle-git
+htop
+weechat
+dwb
+nausea
+youtube-dl
+wget
+vim
+emacs
+python-pip
+dunst
+rofi

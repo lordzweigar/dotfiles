@@ -9,7 +9,7 @@ xrdb -load  /home/$USER/.Xresources &
 
 #background
 ~/.fehbg &
-
+nitrogen --restore &
 #compositing
 compton &
 

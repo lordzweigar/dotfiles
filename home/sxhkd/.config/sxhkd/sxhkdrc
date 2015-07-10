@@ -110,7 +110,7 @@ super + @button{1-3}
 super + d
     bspc control --toggle-visibility
 
-super + shift + q
+super + shift + Excape
     bspc quit && pkill info.sh && pkill panel.sh
 
 super + {_,shift} + semicolon
@@ -118,6 +118,9 @@ super + {_,shift} + semicolon
 
 super + {_,shift} + slash
     ~/bin/{gapt,panelt}
+# Some other things
+super + g
+   bspc desktop -E
 #
 # wm independent hotkeys
 #
@@ -132,7 +135,27 @@ super + e
 
 super + Return
     termite
+# volume control cus why not
 
+super + q
+    amixer -M set Master 1%+
+
+super + a
+   amixer -M  set Master 1%-
+
+super + shift + q
+    amixer -M set Master 5%+
+
+super + shift + a
+   amixer -M  set Master 5%-
+
+super + z
+  amixer set Master toggle
+super + shift +  z
+  amixer set Master toggle
+# Other stuff
+super + shift + Return
+    urxvt
 super + space
     ~/bin/dmenu_run
 
